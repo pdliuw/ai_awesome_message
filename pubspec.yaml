@@ -1,9 +1,8 @@
 name: ai_awesome_message
 description: A new Awesome message widget that is sames to toast&#x2F;snackbar&#x2F;prompt of Flutter package.
 version: 0.0.1
-author:
 homepage: https://pdliuw.github.io/
-repository:
+repository: https://github.com/pdliuw/ai_awesome_message
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
