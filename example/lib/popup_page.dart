@@ -92,9 +92,9 @@ class PopupState extends State<PopupPage> {
           Airoute.push(
             route: AwesomeMessageRoute(
               awesomeMessage: AwesomeHelper.createAwesome(
-                  title: "哈哈哈", message: "提示的具体的消息的展示"),
+                  title: "title", message: "message"),
               theme: null,
-              settings: RouteSettings(name: "/flushRouteName"),
+              settings: RouteSettings(name: "/messageRouteName"),
             ),
           );
         },
