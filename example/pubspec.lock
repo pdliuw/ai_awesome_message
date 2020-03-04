@@ -8,6 +8,15 @@ packages:
       relative: true
     source: path
     version: "0.0.1"
+  airoute:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "5709131da0cd46916790b6e469949f44e8738dfc"
+      url: "https://github.com/pdliuw/airoute.git"
+    source: git
+    version: "0.1.9"
   archive:
     dependency: transitive
     description:
