@@ -16,6 +16,8 @@ class PopupPage extends StatefulWidget {
 ///
 /// PopupState
 class PopupState extends State<PopupPage> {
+  bool _showMessageWidget = false;
+
   ///
   ///
   void _showTopPicker() {
@@ -89,7 +91,6 @@ class PopupState extends State<PopupPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-
           //method one
 //          Navigator.push(
 //            context,
@@ -115,9 +116,33 @@ class PopupState extends State<PopupPage> {
       ),
       body: Column(
         children: <Widget>[
+          ExpansionTile(
+            title: Text("Tools"),
+            children: <Widget>[
+              ListTile(
+                subtitle: Row(
+                  children: <Widget>[
+                    Text("Show AwesomeMessasge Widget"),
+                    Container(
+                      child: Switch(
+                        value: _showMessageWidget,
+                        onChanged: (value) {
+                          setState(() {
+                            _showMessageWidget = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
           Container(
-            child:
-                AwesomeHelper.createAwesome(title: "title", message: "message"),
+            child: _showMessageWidget
+                ? AwesomeHelper.createAwesome(
+                    title: "title", message: "message")
+                : Text(""),
           ),
           Center(
             child: MaterialButton(
@@ -125,6 +150,19 @@ class PopupState extends State<PopupPage> {
                 _showTopPopup();
               },
               child: Text("top popup"),
+            ),
+          ),
+          Container(
+            child: RaisedButton.icon(
+              icon: Icon(Icons.ondemand_video),
+              color: Colors.blue,
+              textColor: Colors.white,
+              onPressed: () {
+                Airoute.pushNamed(
+                  routeName: "/AiAwesomeMessageToolPage",
+                );
+              },
+              label: Text("AwesomeMessage online config tools"),
             ),
           ),
           MaterialButton(

@@ -1,5 +1,6 @@
 import 'package:airoute/airoute.dart';
 import 'package:example/popup_page.dart';
+import 'package:example/tool_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(
@@ -20,6 +21,7 @@ void main() => runApp(
         home: MyHomePage(title: 'Flutter Demo Home Page'),
         routes: <String, AirouteBuilder>{
           "/PopupPage": () => PopupPage(),
+          "/AiAwesomeMessageToolPage": () => AiAwesomeMessageToolPage(),
         },
       ),
     );

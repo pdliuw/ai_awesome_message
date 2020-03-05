@@ -27,12 +27,12 @@ A new Awesome message widget that is sames to toast&#x2F;snackbar&#x2F;prompt of
 
 |iOS|Android|
 |:-|:-|
-|![airoute_ios](https://github.com/pdliuw/airoute/blob/master/example/raw/airoute_render_ios.gif)|![airoute_android](https://github.com/pdliuw/airoute/blob/master/example/raw/airoute_render_android.gif)|
+|![AiAwesomeMessage_ios](https://github.com/pdliuw/ai_awesome_message/blob/master/example/raw/ai_awesome_message_render_ios.gif)|![AiAwesomeMessage_android](https://github.com/pdliuw/ai_awesome_message/blob/master/example/raw/ai_awesome_message_render_android.gif)|
 |:-|:-|
 
 |macOS|web|
 |:-|:-|
-|![airoute_macos](https://github.com/pdliuw/airoute/blob/master/example/raw/airoute_render_macos.gif)|![airoute_web](https://github.com/pdliuw/airoute/blob/master/example/raw/airoute_render_web.gif)|
+|![AiAwesomeMessage_macos](https://github.com/pdliuw/ai_awesome_message/blob/master/example/raw/ai_awesome_message_render_macos.gif)|![AiAwesomeMessage_web](https://github.com/pdliuw/ai_awesome_message/blob/master/example/raw/ai_awesome_message_render_web.gif)|
 |:-|:-|
 
 
