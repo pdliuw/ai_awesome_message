@@ -182,4 +182,11 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 ```
 
+## LICENSE
+
+    BSD 3-Clause License
+    
+    Copyright (c) 2020, pdliuw
+    All rights reserved.
+
 
