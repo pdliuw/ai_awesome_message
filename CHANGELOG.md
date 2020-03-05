@@ -1,4 +1,4 @@
-## [0.1.0+1]
+## [0.1.0+2]
 
 ### 1、Environment
 
@@ -13,7 +13,7 @@ Environment:
 
 As the Route Api of flutter 1.15.4-pre.190 has been modified, it appears that "ai_awesome_message v0.1.0 cannot run in flutter 1.15.4-pre.190 environment", this issue is not resolved, and "v0.1.0- pre "to resolve this issue.
 
-Note: If your development environment is "Flutter: 1.12.13 + hotfix.8", please do not use "0.1.0-pre", please use "v0.1.0"
+Note: If your development environment is "Flutter: 1.12.13 + hotfix.8", please do not use "v0.1.0+2", please use "v0.1.0"
 
 
 ## [0.1.0]
