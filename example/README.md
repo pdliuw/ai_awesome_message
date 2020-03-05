@@ -2,15 +2,151 @@
 
 ai_awesome_message example application.
 
-## Getting Started
+---------
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+import 'package:ai_awesome_message/ai_awesome_message.dart';
+import 'package:airoute/airoute.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'message_popup_route.dart';
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+///
+/// PopupPage
+class PopupPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return PopupState();
+  }
+}
+
+///
+/// PopupState
+class PopupState extends State<PopupPage> {
+  ///
+  ///
+  void _showTopPicker() {
+    Navigator.of(context, rootNavigator: true).push(
+      MessagePopupRoute(
+        barrierLabel: 'Dismiss',
+        semanticsDismissible: false,
+        builder: (context) {
+          return Container(
+            height: 200,
+            color: Colors.green,
+            child: Scaffold(
+              backgroundColor: Colors.green,
+              body: Container(
+                child: CupertinoPicker(
+                    itemExtent: 42,
+                    onSelectedItemChanged: (index) {},
+                    children: <Widget>[
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Text("first"),
+                      ),
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Text("first"),
+                      ),
+                      MaterialButton(
+                        onPressed: () {},
+                        child: Text("first"),
+                      ),
+                    ]),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  void _showTopPopup() {
+    Navigator.of(context, rootNavigator: true).push(
+      MessagePopupRoute(
+        barrierLabel: 'Dismiss',
+        semanticsDismissible: false,
+        builder: (context) {
+          return Container(
+            height: 200,
+            child: Scaffold(
+              body: SingleChildScrollView(
+                child: Column(
+                  children: <Widget>[
+                    ListTile(leading: Text("Air")),
+                    ListTile(leading: Text("Jack")),
+                    ListTile(leading: Text("Lucy")),
+                    ListTile(leading: Text("Tom")),
+                    ListTile(leading: Text("James")),
+                  ],
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+
+          //method one
+//          Navigator.push(
+//            context,
+//            AwesomeMessageRoute(
+//              awesomeMessage: AwesomeHelper.createAwesome(
+//                  title: "title", message: "message"),
+//              theme: null,
+//              settings: RouteSettings(name: "/messageRouteName"),
+//            ),
+//          );
+          //method two
+          Airoute.push(
+            route: AwesomeMessageRoute(
+              awesomeMessage: AwesomeHelper.createAwesome(
+                  title: "title", message: "message"),
+              theme: Theme.of(context),
+              settings: RouteSettings(name: "/messageRouteName"),
+            ),
+          );
+        },
+        label: Text("message"),
+        icon: Icon(Icons.add),
+      ),
+      body: Column(
+        children: <Widget>[
+          Container(
+            child:
+                AwesomeHelper.createAwesome(title: "title", message: "message"),
+          ),
+          Center(
+            child: MaterialButton(
+              onPressed: () {
+                _showTopPopup();
+              },
+              child: Text("top popup"),
+            ),
+          ),
+          MaterialButton(
+            onPressed: () {
+              _showTopPicker();
+            },
+            child: Text("top popup+picker"),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+
+```

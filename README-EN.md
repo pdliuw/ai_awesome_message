@@ -11,18 +11,19 @@ A new Awesome message widget that is sames to toast&#x2F;snackbar&#x2F;prompt of
 |[English Document](https://github.com/pdliuw/ai_awesome_message/blob/master/README-EN.md)|[中文文档](https://github.com/pdliuw/ai_awesome_message)|
 |:-|:-|
 
-## 我们的宗旨是：帮助开发者更加便利开发、切身体会编程之美！
+## Our aim is to help developers make development more convenient and experience the beauty of programming!
+
 
 ### ai_awesome_message ｜ AiAwesomeMessage
 
 [![pub package](https://img.shields.io/pub/v/ai_awesome_message.svg)](https://pub.dev/packages/ai_awesome_message)
 
 
-[AiAwesomeMessage](https://github.com/pdliuw/ai_awesome_message) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
+[AiAwesomeMessage](https://github.com/pdliuw/ai_awesome_message) in[project sample](https://github.com/flutter-app-sample/flutter_app_sample) Application in actual combat [flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
 
 
 
-## 效果图
+## Effect
 
 |iOS|Android|
 |:-|:-|
@@ -35,13 +36,13 @@ A new Awesome message widget that is sames to toast&#x2F;snackbar&#x2F;prompt of
 |:-|:-|
 
 
-## 1.安装
+## 1.Install
 
-使用当前包作为依赖库
+Use this package as a library
 
-### 1. 依赖此库
+### 1. Depend on it
 
-在文件 'pubspec.yaml' 中添加
+Add this to your package's pubspec.yaml file:
 
 [![pub package](https://img.shields.io/pub/v/ai_awesome_message.svg)](https://pub.dev/packages/ai_awesome_message)
 
@@ -53,7 +54,8 @@ dependencies:
 
 ```
 
-或以这种方式添加
+Or add it this way
+
 
 ```
 
@@ -64,9 +66,13 @@ dependencies:
 
 ```
 
-### 2. 安装此库
+### 2. Install it
 
-你可以通过下面的命令行来安装此库
+You can install packages from the command line:
+
+with Flutter:
+
+
 
 ```
 
@@ -75,11 +81,11 @@ $ flutter pub get
 
 ```
 
-你也可以通过项目开发工具通过可视化操作来执行上述步骤
+Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
 
-### 3. 导入此库
+### 3. Import it
 
-现在，在你的Dart编辑代码中，你可以使用：
+Now in your Dart code, you can use:
 
 ```
 
@@ -89,9 +95,10 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 ```
 
 
-## 2.使用
+## 2.Usage
 
-### 1.作为Widget使用
+### 1.Use as Widget
+
 
 
 ```
@@ -104,7 +111,7 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 ```
 
-### 2.作为Route使用
+### 2.Use as Route
 
 
 ```
@@ -121,7 +128,7 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 ```
 
-### 3.作为Route使用并带有Theme
+### 3.Use as Route with Theme
 
 
 ```
@@ -137,10 +144,10 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 ```
 
-## 3.我们推荐，您这样使用将会为您带来巨大的便利
+## 3.We recommend that you use it this way will bring you great convenience
 
 
-### 1.作为Widget使用
+### 1.Use as Widget
 
 
 ```
@@ -153,9 +160,9 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 ```
 
-### 2.作为Route使用
+### 2.Use as Route
 
-与 Airoute | [![pub package](https://img.shields.io/pub/v/airoute.svg)](https://pub.dev/packages/airoute) 搭配使用，事半功倍！
+With Airoute | [![pub package](https://img.shields.io/pub/v/airoute.svg)](https://pub.dev/packages/airoute) Use with less effort！
 
 ```
 

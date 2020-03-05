@@ -89,11 +89,23 @@ class PopupState extends State<PopupPage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
+
+          //method one
+//          Navigator.push(
+//            context,
+//            AwesomeMessageRoute(
+//              awesomeMessage: AwesomeHelper.createAwesome(
+//                  title: "title", message: "message"),
+//              theme: null,
+//              settings: RouteSettings(name: "/messageRouteName"),
+//            ),
+//          );
+          //method two
           Airoute.push(
             route: AwesomeMessageRoute(
               awesomeMessage: AwesomeHelper.createAwesome(
                   title: "title", message: "message"),
-              theme: null,
+              theme: Theme.of(context),
               settings: RouteSettings(name: "/messageRouteName"),
             ),
           );
@@ -103,6 +115,10 @@ class PopupState extends State<PopupPage> {
       ),
       body: Column(
         children: <Widget>[
+          Container(
+            child:
+                AwesomeHelper.createAwesome(title: "title", message: "message"),
+          ),
           Center(
             child: MaterialButton(
               onPressed: () {
