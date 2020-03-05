@@ -126,8 +126,9 @@ import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 ```
 
-          Airoute.push(
-            route: AwesomeMessageRoute(
+          Navigator.push(
+            context,
+            AwesomeMessageRoute(
               awesomeMessage: AwesomeHelper.createAwesome(
                   title: "title", message: "message"),
               theme: Theme.of(context),
