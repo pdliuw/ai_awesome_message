@@ -1,3 +1,18 @@
+## [0.2.0-compatible-flutter-v1.15.4-pre.190]
+
+Publish preview version based on:
+* Dart: 2.8.0
+* Flutter: 1.15.4-pre.190=
+
+
+## [0.2.0]
+
+Publish stable version based on:
+* Dart: 2.7.1
+* pana: 0.13.5
+* Flutter: 1.12.13+hotfix.8
+
+
 ## [0.1.0+2]
 
 ### 1、Environment
