@@ -26,7 +26,7 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
     _onStatusChanged = awesomeMessage.onStatusChanged;
   }
 
-  _configureAlignment(AwesomeMessagePosition flushbarPosition) {
+  _configureAlignment(AwesomeMessagePosition awesomeMessagePosition) {
     switch (awesomeMessage.awesomeMessagePosition) {
       case AwesomeMessagePosition.TOP:
         {
@@ -297,6 +297,7 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
   }
 
   @override
+  // ignore: must_call_super
   TickerFuture didPush() {
     assert(_controller != null,
         '$runtimeType.didPush called before calling install() or after calling dispose().');

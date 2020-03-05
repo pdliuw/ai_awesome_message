@@ -14,24 +14,24 @@ class AwesomeHelper {
     String message = '',
     TipType tipType = TipType.INFO,
   }) {
-    List<Color> _tipStyleColorsSample = [
-      Colors.blue[100],
-      Colors.orange[100],
-      Colors.red[100],
-      Colors.green[200]
-    ];
-    List<Color> _tipIndicatorColorsSample = [
-      Colors.blue[300],
-      Colors.orange[300],
-      Colors.red[300],
-      Colors.blue[300]
-    ];
-    List<Color> _tipIconColorsSample = [
-      Colors.blue[500],
-      Colors.orange[500],
-      Colors.red[500],
-      Colors.blue[500]
-    ];
+//    List<Color> _tipStyleColorsSample = [
+//      Colors.blue[100],
+//      Colors.orange[100],
+//      Colors.red[100],
+//      Colors.green[200]
+//    ];
+//    List<Color> _tipIndicatorColorsSample = [
+//      Colors.blue[300],
+//      Colors.orange[300],
+//      Colors.red[300],
+//      Colors.blue[300]
+//    ];
+//    List<Color> _tipIconColorsSample = [
+//      Colors.blue[500],
+//      Colors.orange[500],
+//      Colors.red[500],
+//      Colors.blue[500]
+//    ];
 
     IconData _tipIcon;
     Color _tipStyleColor;
