@@ -19,9 +19,9 @@ void main() => runApp(
           primarySwatch: Colors.blue,
         ),
         home: MyHomePage(title: 'Flutter Demo Home Page'),
-        routes: <String, AirouteBuilder>{
-          "/PopupPage": () => PopupPage(),
-          "/AiAwesomeMessageToolPage": () => AiAwesomeMessageToolPage(),
+        routes: <String, WidgetBuilder>{
+          "/PopupPage": (_) => PopupPage(),
+          "/AiAwesomeMessageToolPage": (_) => AiAwesomeMessageToolPage(),
         },
       ),
     );
