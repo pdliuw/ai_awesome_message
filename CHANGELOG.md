@@ -1,3 +1,9 @@
+## [0.3.0]
+
+Publish stable version based on:
+* Flutter 1.17.0 • channel stable
+* Dart 2.8.1
+
 ## [0.2.0-compatible-flutter-v1.15.4-pre.190]
 
 Publish preview version based on:
