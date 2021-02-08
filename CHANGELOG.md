@@ -1,3 +1,8 @@
+## [1.0.0]
+
+Publish stable version based on:
+* Flutter 1.22.0 • channel stable
+
 ## [0.3.0]
 
 Publish stable version based on:
