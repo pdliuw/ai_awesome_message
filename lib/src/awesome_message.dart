@@ -24,7 +24,7 @@ class AwesomeMessage<T extends Object> extends StatefulWidget {
       Color leftBarIndicatorColor,
       List<BoxShadow> boxShadows,
       Gradient backgroundGradient,
-      FlatButton mainButton,
+      TextButton mainButton,
       OnTap onTap,
       Duration duration,
       bool isDismissible = true,
@@ -121,8 +121,8 @@ class AwesomeMessage<T extends Object> extends StatefulWidget {
   /// An option to animate the icon (if present). Defaults to true.
   final bool shouldIconPulse;
 
-  /// A [FlatButton] widget if you need an action from the user.
-  final FlatButton mainButton;
+  /// A [TextButton] widget if you need an action from the user.
+  final TextButton mainButton;
 
   /// A callback that registers the user's click anywhere. An alternative to [mainButton]
   final OnTap onTap;
@@ -395,17 +395,28 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
           future: _boxHeightCompleter.future,
           builder: (context, AsyncSnapshot<Size> snapshot) {
             if (snapshot.hasData) {
-              return ClipRect(
-                child: BackdropFilter(
-                  filter: ImageFilter.blur(
-                      sigmaX: widget.barBlur, sigmaY: widget.barBlur),
-                  child: Container(
-                    height: snapshot.data.height,
-                    width: snapshot.data.width,
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      borderRadius: BorderRadius.circular(widget.borderRadius),
-                    ),
+//              return ClipRect(
+//                child: BackdropFilter(
+//                  filter: ImageFilter.blur(
+//                      sigmaX: widget.barBlur, sigmaY: widget.barBlur),
+//                  child: Container(
+//                    height: snapshot.data.height,
+//                    width: snapshot.data.width,
+//                    decoration: BoxDecoration(
+//                      color: Colors.transparent,
+//                      borderRadius: BorderRadius.circular(widget.borderRadius),
+//                    ),
+//                  ),
+//                ),
+//              );
+              return ClipRRect(
+                borderRadius: BorderRadius.circular(widget.borderRadius),
+                child: Container(
+                  height: snapshot.data.height,
+                  width: snapshot.data.width,
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(widget.borderRadius),
                   ),
                 ),
               );
@@ -699,7 +710,7 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
     );
   }
 
-  FlatButton _getMainActionButton() {
+  TextButton _getMainActionButton() {
     if (widget.mainButton != null) {
       return widget.mainButton;
     } else {

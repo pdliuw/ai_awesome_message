@@ -275,7 +275,7 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
 
         if (!isCurrent) {
           navigator.finalizeRoute(this);
-          assert(overlayEntries.isEmpty);
+//          assert(overlayEntries.isEmpty);
         }
         break;
     }

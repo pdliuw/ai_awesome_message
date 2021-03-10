@@ -1,3 +1,10 @@
+## [2.0.0]
+
+* adapter: 
+
+-flutter v2.0.0
+-Dart 2.12.0
+
 ## [1.0.0]
 
 Publish stable version based on:
