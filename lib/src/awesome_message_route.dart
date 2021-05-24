@@ -3,20 +3,20 @@ part of ai_awesome_message;
 /// AwesomeMessageRoute
 ///
 class AwesomeMessageRoute<T> extends OverlayRoute<T> {
-  Animation<double> _filterBlurAnimation;
-  Animation<Color> _filterColorAnimation;
+  late Animation<double> _filterBlurAnimation;
+  late Animation<Color?> _filterColorAnimation;
 
   AwesomeMessageRoute({
-    @required this.theme,
-    @required this.awesomeMessage,
-    RouteSettings settings,
+    this.theme,
+    required this.awesomeMessage,
+    RouteSettings? settings,
   }) : super(settings: settings) {
     this._builder = Builder(builder: (BuildContext innerContext) {
       return GestureDetector(
         child: awesomeMessage,
         onTap: awesomeMessage.onTap != null
             ? () {
-                awesomeMessage.onTap(awesomeMessage);
+                awesomeMessage.onTap!(awesomeMessage);
               }
             : null,
       );
@@ -43,20 +43,20 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
     }
   }
 
-  AwesomeMessage awesomeMessage;
-  Builder _builder;
+  late AwesomeMessage awesomeMessage;
+  Builder? _builder;
 
-  final ThemeData theme;
+  final ThemeData? theme;
 
   Future<T> get completed => _transitionCompleter.future;
   final Completer<T> _transitionCompleter = Completer<T>();
 
-  AwesomeMessageStatusCallback _onStatusChanged;
-  Alignment _initialAlignment;
-  Alignment _endAlignment;
+  AwesomeMessageStatusCallback? _onStatusChanged;
+  Alignment? _initialAlignment;
+  Alignment? _endAlignment;
   bool _wasDismissedBySwipe = false;
 
-  Timer _timer;
+  Timer? _timer;
 
   bool get opaque => false;
 
@@ -64,12 +64,12 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
   Iterable<OverlayEntry> createOverlayEntries() {
     List<OverlayEntry> overlays = [];
 
-    if (awesomeMessage.overlayBlur > 0.0) {
+    if (awesomeMessage.overlayBlur! > 0.0) {
       overlays.add(
         OverlayEntry(
             builder: (BuildContext context) {
               return GestureDetector(
-                onTap: awesomeMessage.isDismissible
+                onTap: awesomeMessage.isDismissible!
                     ? () => awesomeMessage.dismiss()
                     : null,
                 child: AnimatedBuilder(
@@ -98,9 +98,9 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
           builder: (BuildContext context) {
             final Widget annotatedChild = Semantics(
               child: AlignTransition(
-                alignment: _animation,
-                child: awesomeMessage.isDismissible
-                    ? _getDismissibleAwesomeMessage(_builder)
+                alignment: _animation!,
+                child: awesomeMessage.isDismissible!
+                    ? _getDismissibleAwesomeMessage(_builder!)
                     : _getAwesomeMessage(),
               ),
               focused: false,
@@ -108,7 +108,7 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
               explicitChildNodes: true,
             );
             return theme != null
-                ? Theme(data: theme, child: annotatedChild)
+                ? Theme(data: theme!, child: annotatedChild)
                 : annotatedChild;
           },
           maintainState: false,
@@ -139,9 +139,9 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
         _wasDismissedBySwipe = true;
 
         if (isCurrent) {
-          navigator.pop();
+          navigator?.pop();
         } else {
-          navigator.removeRoute(this);
+          navigator?.removeRoute(this);
         }
       },
       child: _getAwesomeMessage(),
@@ -170,19 +170,19 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
 
   @override
   bool get finishedWhenPopped =>
-      _controller.status == AnimationStatus.dismissed;
+      _controller?.status == AnimationStatus.dismissed;
 
   /// The animation that drives the route's transition and the previous route's
   /// forward transition.
-  Animation<Alignment> get animation => _animation;
-  Animation<Alignment> _animation;
+  Animation<Alignment>? get animation => _animation;
+  Animation<Alignment>? _animation;
 
   /// The animation controller that the route uses to drive the transitions.
   ///
   /// The animation itself is exposed by the [animation] property.
   @protected
-  AnimationController get controller => _controller;
-  AnimationController _controller;
+  AnimationController? get controller => _controller;
+  AnimationController? _controller;
 
   /// Called to create the animation controller that will drive the transitions to
   /// this route from the previous one, and back to the previous route from this
@@ -191,11 +191,11 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
     assert(!_transitionCompleter.isCompleted,
         'Cannot reuse a $runtimeType after disposing it.');
     assert(awesomeMessage.animationDuration != null &&
-        awesomeMessage.animationDuration >= Duration.zero);
+        awesomeMessage.animationDuration! >= Duration.zero);
     return AnimationController(
       duration: awesomeMessage.animationDuration,
       debugLabel: debugLabel,
-      vsync: navigator,
+      vsync: navigator!,
     );
   }
 
@@ -208,8 +208,8 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
     assert(_controller != null);
     return AlignmentTween(begin: _initialAlignment, end: _endAlignment).animate(
       CurvedAnimation(
-        parent: _controller,
-        curve: awesomeMessage.forwardAnimationCurve,
+        parent: _controller!,
+        curve: awesomeMessage.forwardAnimationCurve!,
         reverseCurve: awesomeMessage.reverseAnimationCurve,
       ),
     );
@@ -218,7 +218,7 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
   Animation<double> createBlurFilterAnimation() {
     return Tween(begin: 0.0, end: awesomeMessage.overlayBlur).animate(
       CurvedAnimation(
-        parent: _controller,
+        parent: _controller!,
         curve: Interval(
           0.0,
           0.35,
@@ -228,12 +228,12 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
     );
   }
 
-  Animation<Color> createColorFilterAnimation() {
+  Animation<Color?> createColorFilterAnimation() {
     return ColorTween(
             begin: Colors.transparent, end: awesomeMessage.overlayColor)
         .animate(
       CurvedAnimation(
-        parent: _controller,
+        parent: _controller!,
         curve: Interval(
           0.0,
           0.35,
@@ -243,25 +243,25 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
     );
   }
 
-  T _result;
-  AwesomeMessageStatus currentStatus;
+  T? _result;
+  AwesomeMessageStatus? currentStatus;
 
   //copy of `routes.dart`
   void _handleStatusChanged(AnimationStatus status) {
     switch (status) {
       case AnimationStatus.completed:
         currentStatus = AwesomeMessageStatus.SHOWING;
-        _onStatusChanged(currentStatus);
+        _onStatusChanged!(currentStatus!);
         if (overlayEntries.isNotEmpty) overlayEntries.first.opaque = opaque;
 
         break;
       case AnimationStatus.forward:
         currentStatus = AwesomeMessageStatus.IS_APPEARING;
-        _onStatusChanged(currentStatus);
+        _onStatusChanged!(currentStatus!);
         break;
       case AnimationStatus.reverse:
         currentStatus = AwesomeMessageStatus.IS_HIDING;
-        _onStatusChanged(currentStatus);
+        _onStatusChanged!(currentStatus!);
         if (overlayEntries.isNotEmpty) overlayEntries.first.opaque = false;
         break;
       case AnimationStatus.dismissed:
@@ -271,10 +271,10 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
         // back gesture drives this animation to the dismissed status before
         // popping the navigator.
         currentStatus = AwesomeMessageStatus.DISMISSED;
-        _onStatusChanged(currentStatus);
+        _onStatusChanged!(currentStatus!);
 
         if (!isCurrent) {
-          navigator.finalizeRoute(this);
+          navigator?.finalizeRoute(this);
 //          assert(overlayEntries.isEmpty);
         }
         break;
@@ -303,25 +303,25 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
         '$runtimeType.didPush called before calling install() or after calling dispose().');
     assert(!_transitionCompleter.isCompleted,
         'Cannot reuse a $runtimeType after disposing it.');
-    _animation.addStatusListener(_handleStatusChanged);
+    _animation!.addStatusListener(_handleStatusChanged);
     _configureTimer();
-    return _controller.forward();
+    return _controller!.forward();
   }
 
   @override
-  void didReplace(Route<dynamic> oldRoute) {
+  void didReplace(Route<dynamic>? oldRoute) {
     assert(_controller != null,
         '$runtimeType.didReplace called before calling install() or after calling dispose().');
     assert(!_transitionCompleter.isCompleted,
         'Cannot reuse a $runtimeType after disposing it.');
     if (oldRoute is AwesomeMessageRoute)
-      _controller.value = oldRoute._controller.value;
-    _animation.addStatusListener(_handleStatusChanged);
+      _controller!.value = oldRoute._controller!.value;
+    _animation!.addStatusListener(_handleStatusChanged);
     super.didReplace(oldRoute);
   }
 
   @override
-  bool didPop(T result) {
+  bool didPop(T? result) {
     assert(_controller != null,
         '$runtimeType.didPop called before calling install() or after calling dispose().');
     assert(!_transitionCompleter.isCompleted,
@@ -332,12 +332,12 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
 
     if (_wasDismissedBySwipe) {
       Timer(Duration(milliseconds: 200), () {
-        _controller.reset();
+        _controller?.reset();
       });
 
       _wasDismissedBySwipe = false;
     } else {
-      _controller.reverse();
+      _controller?.reverse();
     }
 
     return super.didPop(result);
@@ -345,26 +345,26 @@ class AwesomeMessageRoute<T> extends OverlayRoute<T> {
 
   void _configureTimer() {
     if (awesomeMessage.duration != null) {
-      if (_timer != null && _timer.isActive) {
-        _timer.cancel();
+      if (_timer != null && _timer!.isActive) {
+        _timer?.cancel();
       }
-      _timer = Timer(awesomeMessage.duration, () {
+      _timer = Timer(awesomeMessage.duration!, () {
         if (this.isCurrent) {
-          navigator.pop();
+          navigator?.pop();
         } else if (this.isActive) {
-          navigator.removeRoute(this);
+          navigator?.removeRoute(this);
         }
       });
     } else {
       if (_timer != null) {
-        _timer.cancel();
+        _timer!.cancel();
       }
     }
   }
 
   void _cancelTimer() {
-    if (_timer != null && _timer.isActive) {
-      _timer.cancel();
+    if (_timer != null && _timer!.isActive) {
+      _timer!.cancel();
     }
   }
 

@@ -10,8 +10,8 @@ class AwesomeHelper {
   /// [message]
   /// [tipType]
   static AwesomeMessage createAwesome({
-    String title,
-    String message = '',
+    String? title,
+    String? message,
     TipType tipType = TipType.INFO,
   }) {
 //    List<Color> _tipStyleColorsSample = [
@@ -40,45 +40,45 @@ class AwesomeHelper {
     if (tipType == TipType.INFO) {
       title = title ?? "提示";
       _tipIcon = Icons.info_outline;
-      _tipStyleColor = Colors.blue[100];
-      _tipStyleIconColor = Colors.blue[500];
-      _tipStyleBorderColor = Colors.blue[300];
+      _tipStyleColor = Colors.blue[100]!;
+      _tipStyleIconColor = Colors.blue[500]!;
+      _tipStyleBorderColor = Colors.blue[300]!;
     } else if (tipType == TipType.WARN) {
       title = title ?? "警告";
       _tipIcon = Icons.error_outline;
-      _tipStyleColor = Colors.orange[100];
-      _tipStyleIconColor = Colors.orange[500];
-      _tipStyleBorderColor = Colors.orange[300];
+      _tipStyleColor = Colors.orange[100]!;
+      _tipStyleIconColor = Colors.orange[500]!;
+      _tipStyleBorderColor = Colors.orange[300]!;
     } else if (tipType == TipType.ERROR) {
       title = title ?? "错误";
       _tipIcon = Icons.cancel;
-      _tipStyleColor = Colors.red[100];
-      _tipStyleIconColor = Colors.red[500];
-      _tipStyleBorderColor = Colors.red[300];
+      _tipStyleColor = Colors.red[100]!;
+      _tipStyleIconColor = Colors.red[500]!;
+      _tipStyleBorderColor = Colors.red[300]!;
     } else if (tipType == TipType.COMPLETE) {
       title = title ?? "完成";
       _tipIcon = Icons.done_outline;
-      _tipStyleColor = Colors.green[100];
-      _tipStyleIconColor = Colors.green[500];
-      _tipStyleBorderColor = Colors.green[300];
+      _tipStyleColor = Colors.green[100]!;
+      _tipStyleIconColor = Colors.green[500]!;
+      _tipStyleBorderColor = Colors.green[300]!;
     } else {
       title = title ?? "默认";
       _tipIcon = Icons.info_outline;
-      _tipStyleColor = Colors.blue[100];
-      _tipStyleIconColor = Colors.blue[500];
-      _tipStyleBorderColor = Colors.blue[300];
+      _tipStyleColor = Colors.blue[100]!;
+      _tipStyleIconColor = Colors.blue[500]!;
+      _tipStyleBorderColor = Colors.blue[300]!;
     }
 
     //widget
     return AwesomeMessage(
       titleText: Text(
-        "${title ?? '提示'}",
+        "$title",
         style: TextStyle(
           color: Colors.black87,
         ),
       ),
       messageText: Text(
-        "${message ?? '提示'}",
+        "$message",
         style: TextStyle(
           color: Colors.black54,
         ),
