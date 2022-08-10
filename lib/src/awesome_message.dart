@@ -28,14 +28,12 @@ class AwesomeMessage<T extends Object> extends StatefulWidget {
       OnTap? onTap,
       Duration? duration,
       bool isDismissible = true,
-      AwesomeMessageDismissDirection dismissDirection =
-          AwesomeMessageDismissDirection.VERTICAL,
+      AwesomeMessageDismissDirection dismissDirection = AwesomeMessageDismissDirection.VERTICAL,
       bool showProgressIndicator = false,
       AnimationController? progressIndicatorController,
       Color? progressIndicatorBackgroundColor,
       Animation<Color>? progressIndicatorValueColor,
-      AwesomeMessagePosition awesomeMessagePosition =
-          AwesomeMessagePosition.BOTTOM,
+      AwesomeMessagePosition awesomeMessagePosition = AwesomeMessagePosition.BOTTOM,
       AwesomeMessageStyle awesomeMessageStyle = AwesomeMessageStyle.FLOATING,
       Curve forwardAnimationCurve = Curves.easeOutCirc,
       Curve reverseAnimationCurve = Curves.easeOutCirc,
@@ -68,8 +66,7 @@ class AwesomeMessage<T extends Object> extends StatefulWidget {
         this.dismissDirection = dismissDirection,
         this.showProgressIndicator = showProgressIndicator,
         this.progressIndicatorController = progressIndicatorController,
-        this.progressIndicatorBackgroundColor =
-            progressIndicatorBackgroundColor,
+        this.progressIndicatorBackgroundColor = progressIndicatorBackgroundColor,
         this.progressIndicatorValueColor = progressIndicatorValueColor,
         this.awesomeMessagePosition = awesomeMessagePosition,
         this.awesomeMessageStyle = awesomeMessageStyle,
@@ -237,8 +234,7 @@ class AwesomeMessage<T extends Object> extends StatefulWidget {
 
   /// Checks if the AwesomeMessage is dismissed
   bool isDismissed() {
-    return _awesomeMessageRoute?.currentStatus ==
-        AwesomeMessageStatus.DISMISSED;
+    return _awesomeMessageRoute?.currentStatus == AwesomeMessageStatus.DISMISSED;
   }
 
   @override
@@ -247,8 +243,7 @@ class AwesomeMessage<T extends Object> extends StatefulWidget {
   }
 }
 
-class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
-    with TickerProviderStateMixin {
+class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage> with TickerProviderStateMixin {
   AwesomeMessageStatus? currentStatus;
 
   AnimationController? _fadeController;
@@ -270,11 +265,7 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
   void initState() {
     super.initState();
 
-    assert(
-        ((widget.userInputForm != null ||
-            ((widget.message != null && widget.message!.isNotEmpty) ||
-                widget.messageText != null))),
-        "A message is mandatory if you are not using userInputForm. Set either a message or messageText");
+    assert(((widget.userInputForm != null || ((widget.message != null && widget.message!.isNotEmpty) || widget.messageText != null))), "A message is mandatory if you are not using userInputForm. Set either a message or messageText");
 
     _isTitlePresent = (widget.title != null || widget.titleText != null);
     _messageTopMargin = _isTitlePresent ? 6.0 : widget.padding!.top;
@@ -306,7 +297,7 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
   final Completer<Size> _boxHeightCompleter = Completer<Size>();
 
   void _configureLeftBarFuture() {
-    SchedulerBinding.instance?.addPostFrameCallback(
+    SchedulerBinding.instance.addPostFrameCallback(
       (_) {
         final keyContext = backgroundBoxKey.currentContext;
 
@@ -319,8 +310,7 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
   }
 
   void _configurePulseAnimation() {
-    _fadeController =
-        AnimationController(vsync: this, duration: _pulseAnimationDuration);
+    _fadeController = AnimationController(vsync: this, duration: _pulseAnimationDuration);
     _fadeAnimation = Tween(begin: _initialOpacity, end: _finalOpacity).animate(
       CurvedAnimation(
         parent: _fadeController!,
@@ -343,15 +333,13 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
   late VoidCallback _progressListener;
 
   void _configureProgressIndicatorAnimation() {
-    if (widget.showProgressIndicator &&
-        widget.progressIndicatorController != null) {
+    if (widget.showProgressIndicator && widget.progressIndicatorController != null) {
       _progressListener = () {
         setState(() {});
       };
       widget.progressIndicatorController!.addListener(_progressListener);
 
-      _progressAnimation = CurvedAnimation(
-          curve: Curves.linear, parent: widget.progressIndicatorController!);
+      _progressAnimation = CurvedAnimation(curve: Curves.linear, parent: widget.progressIndicatorController!);
     }
   }
 
@@ -360,17 +348,10 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
     return Align(
       heightFactor: 1.0,
       child: Material(
-        color: widget.awesomeMessageStyle == AwesomeMessageStyle.FLOATING
-            ? Colors.transparent
-            : widget.backgroundColor,
+        color: widget.awesomeMessageStyle == AwesomeMessageStyle.FLOATING ? Colors.transparent : widget.backgroundColor,
         child: SafeArea(
-          minimum:
-              widget.awesomeMessagePosition == AwesomeMessagePosition.BOTTOM
-                  ? EdgeInsets.only(
-                      bottom: MediaQuery.of(context).viewInsets.bottom)
-                  : EdgeInsets.only(top: MediaQuery.of(context).viewInsets.top),
-          bottom:
-              widget.awesomeMessagePosition == AwesomeMessagePosition.BOTTOM,
+          minimum: widget.awesomeMessagePosition == AwesomeMessagePosition.BOTTOM ? EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom) : EdgeInsets.only(top: MediaQuery.of(context).viewInsets.top),
+          bottom: widget.awesomeMessagePosition == AwesomeMessagePosition.BOTTOM,
           top: widget.awesomeMessagePosition == AwesomeMessagePosition.TOP,
           left: false,
           right: false,
@@ -433,21 +414,16 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
   Widget _generateInputAwesomeMessage() {
     return Container(
       key: backgroundBoxKey,
-      constraints: widget.maxWidth != null
-          ? BoxConstraints(maxWidth: widget.maxWidth!)
-          : null,
+      constraints: widget.maxWidth != null ? BoxConstraints(maxWidth: widget.maxWidth!) : null,
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         gradient: widget.backgroundGradient,
         boxShadow: widget.boxShadows,
         borderRadius: BorderRadius.circular(widget.borderRadius!),
-        border: widget.borderColor != null
-            ? Border.all(color: widget.borderColor!, width: widget.borderWidth!)
-            : null,
+        border: widget.borderColor != null ? Border.all(color: widget.borderColor!, width: widget.borderWidth!) : null,
       ),
       child: Padding(
-        padding: const EdgeInsets.only(
-            left: 8.0, right: 8.0, bottom: 8.0, top: 16.0),
+        padding: const EdgeInsets.only(left: 8.0, right: 8.0, bottom: 8.0, top: 16.0),
         child: FocusScope(
           child: widget.userInputForm!,
           node: _focusNode,
@@ -463,26 +439,20 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
   Widget _generateAwesomeMessage() {
     return Container(
       key: backgroundBoxKey,
-      constraints: widget.maxWidth != null
-          ? BoxConstraints(maxWidth: widget.maxWidth!)
-          : null,
+      constraints: widget.maxWidth != null ? BoxConstraints(maxWidth: widget.maxWidth!) : null,
       decoration: BoxDecoration(
         color: widget.backgroundColor,
         gradient: widget.backgroundGradient,
         boxShadow: widget.boxShadows,
         borderRadius: BorderRadius.circular(widget.borderRadius!),
-        border: widget.borderColor != null
-            ? Border.all(color: widget.borderColor!, width: widget.borderWidth!)
-            : null,
+        border: widget.borderColor != null ? Border.all(color: widget.borderColor!, width: widget.borderWidth!) : null,
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           widget.showProgressIndicator
               ? LinearProgressIndicator(
-                  value: widget.progressIndicatorController != null
-                      ? _progressAnimation.value
-                      : null,
+                  value: widget.progressIndicatorController != null ? _progressAnimation.value : null,
                   backgroundColor: widget.progressIndicatorBackgroundColor,
                   valueColor: widget.progressIndicatorValueColor,
                 )
@@ -695,10 +665,7 @@ class _AwesomeMessageState<K extends Object> extends State<AwesomeMessage>
         ? widget.titleText!
         : Text(
             widget.title ?? "",
-            style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.white,
-                fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 16.0, color: Colors.white, fontWeight: FontWeight.bold),
           );
   }
 
